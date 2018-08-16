@@ -1,0 +1,4 @@
+1.0.1:
+    - First version of PMFaq
+    - create_groups_table.php
+    - create_faqs_table.php

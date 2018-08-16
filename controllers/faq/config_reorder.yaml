@@ -1,0 +1,5 @@
+title: 'xitara.pmfaqs::lang.faq.reorder_title'
+nameFrom: question
+modelClass: Xitara\PMFaq\Models\Faq
+toolbar:
+    buttons: reorder_toolbar

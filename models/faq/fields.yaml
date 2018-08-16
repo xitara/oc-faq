@@ -1,0 +1,20 @@
+fields:
+    question:
+        label: 'xitara.pmfaq::lang.faq.question'
+        span: full
+        type: text
+    group:
+        label: 'xitara.pmfaq::lang.faq.group'
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    active:
+        label: 'xitara.pmfaq::lang.faq.active'
+        span: auto
+        type: switch
+    answer:
+        label: 'xitara.pmfaq::lang.faq.answer'
+        size: large
+        span: full
+        type: richeditor

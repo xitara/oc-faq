@@ -1,0 +1,10 @@
+fields:
+    name:
+        label: 'xitara.pmfaq::lang.faqs.name'
+        span: full
+        type: text
+    description:
+        label: 'xitara.pmfaq::lang.faqs.description'
+        size: large
+        span: full
+        type: richeditor

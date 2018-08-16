@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: xitara.pmfaq::lang.groups.label
+
+# Model Form Field configuration
+form: $/xitara/pmfaq/models/groups/fields.yaml
+
+# Model Class name
+modelClass: Xitara\PMFaq\Models\Groups
+
+# Default redirect location
+defaultRedirect: xitara/pmfaq/groups
+
+# Create page
+create:
+    # title: xitara.pmfaq::lang.group.create_title
+    redirect: xitara/pmfaq/groups/update/:id
+    redirectClose: xitara/pmfaq/groups
+
+# Update page
+update:
+    # title: xitara.pmfaq::lang.group.update_title
+    redirect: xitara/pmfaq/groups
+    redirectClose: xitara/pmfaq/groups
+
+# Preview page
+preview:
+    # title: xitara.pmfaq::lang.group.preview_title

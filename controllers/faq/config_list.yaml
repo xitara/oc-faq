@@ -1,0 +1,11 @@
+title: 'xitara.pmfaq::lang.faq.list_title'
+modelClass: Xitara\PMFaq\Models\Faq
+list: $/xitara/pmfaq/models/faq/columns.yaml
+recordUrl: 'xitara/pmfaq/faq/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

@@ -1,0 +1,4 @@
+{% for key, faq in faqList %}
+    Q: {{ faq.question }} <br />
+    A: {{ faq.answer|raw }} <br />
+{% endfor %}
