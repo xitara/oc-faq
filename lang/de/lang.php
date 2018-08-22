@@ -1,6 +1,6 @@
 <?php return [
     'plugin' => [
-        'name' => 'PM FAQs',
+        'name' => 'PayedMedia FAQs',
         'description' => 'FAQ-Liste mit Gruppierungsmöglichkeit',
     ],
     'submenu' => [
