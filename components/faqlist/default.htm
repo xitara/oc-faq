@@ -1,4 +1,51 @@
-{% for key, faq in faqList %}
-    Q: {{ faq.question }} <br />
-    A: {{ faq.answer|raw }} <br />
-{% endfor %}
+<div class="faq-accordion">
+    {% for key, faq in faqList %}
+        <h3>{{ faq.question }}</h3>
+        <div>
+            <p>
+                {{ faq.answer|raw }} <br />
+                {% for image in faq.images %}
+                    <a href="{{ image.path }}" data-fancybox="FAQ-image">
+                        <img src="{{ image.thumb(200, auto) }}" alt="">
+                    </a>
+                {% endfor %}
+            </p>
+        </div>
+    {% endfor %}
+</div>
+<script>
+(function($) {
+    $(function() {
+        'use strict';
+
+        // console.log(jQuery);
+        // console.log(jQuery.ui);
+
+        acc_start();
+
+        function acc_start() {
+            console.log('check jquery.ui');
+            if (typeof jQuery.ui == 'undefined') {
+               console.log('no jquery.ui');
+               window.setTimeout('acc_start', 1000);
+               return;
+            }
+
+            $('.faq-accordion').accordion({
+                collapsible: true,
+                heightStyle: 'content',
+                active: false,
+            });
+        }
+    });
+})(jQuery);
+</script>
+<style>
+    .ui-state-hover, .ui-state-focus {
+        background-color: #c3c1b3 !important;
+        color: #1b0303 !important;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>

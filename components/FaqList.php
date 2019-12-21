@@ -1,9 +1,9 @@
-<?php namespace Xitara\PMFaq\Components;
+<?php namespace Xitara\Faq\Components;
 
 use Cms\Classes\ComponentBase;
 use Lang;
-use Xitara\PMFaq\Models\Faq;
-use Xitara\PMFaq\Models\Groups;
+use Xitara\Faq\Models\Faq;
+use Xitara\Faq\Models\Groups;
 
 class FaqList extends ComponentBase
 {
@@ -19,10 +19,10 @@ class FaqList extends ComponentBase
     {
         return [
             'group' => [
-                'title' => 'xitara.pmfaq::lang.faq.group',
-                'description' => 'xitara.pmfaq::lang.description.group',
+                'title' => 'xitara.faq::lang.faq.group',
+                'description' => 'xitara.faq::lang.description.group',
                 'type' => 'dropdown',
-                'placeholder' => 'xitara.pmfaq::lang.groups.placeholder',
+                'placeholder' => 'xitara.faq::lang.groups.placeholder',
             ],
         ];
     }
@@ -32,7 +32,7 @@ class FaqList extends ComponentBase
         $groups = Groups::select('id', 'name')->orderBy('name')->get();
 
         $groupList = [
-            'all' => Lang::get('xitara.pmfaq::lang.groups.all'),
+            'all' => Lang::get('xitara.faq::lang.groups.all'),
         ];
 
         foreach ($groups as $group) {
@@ -44,25 +44,16 @@ class FaqList extends ComponentBase
 
     public function onRender()
     {
-        // var_dump($this->alias);
-
-        $query = Faq::select('id', 'question', 'answer')
-            ->where('active', 1)
+        $query = Faq::where('active', 1)
             ->orderBy('sort_order');
 
-        if ($this->property('group') != 'all') {
+        if ($this->property('group') == 'all') {
+            $groups = Groups::where('is_all', 1)->lists('name', 'id');
+            $query->whereRaw('(`group_id`=' . join(' OR `group_id`=', array_keys($groups)) . ')');
+        } else {
             $query->where('group_id', '=', $this->property('group'));
         }
 
-        foreach ($query->get() as $item) {
-            $faq[$item->id] = [
-                'question' => $item->question,
-                'answer' => $item->answer,
-            ];
-        }
-
-        // var_dump($faq);
-
-        $this->page['faqList'] = $faq;
+        $this->page['faqList'] = $query->get();
     }
 }

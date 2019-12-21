@@ -1,13 +1,18 @@
-<?php namespace Xitara\PMFaq\Controllers;
+<?php namespace Xitara\Faq\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use Log;
 
 /**
  * Faq Back-end Controller
  */
 class Faq extends Controller
 {
+    public $requiredPermissions = [
+        'xitara.faq.faq',
+    ];
+
     public $implement = [
         'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController',
@@ -22,12 +27,31 @@ class Faq extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Xitara.PMFaq', 'pmfaq', 'pmfaq.faq');
+        BackendMenu::setContext('Xitara.Faq', 'faq', 'faq.faq');
+    }
+
+    // public function index()
+    // {
+
+    // $this->asExtension('ListController')->index();
+    // }
+
+    public function listExtendQuery($query)
+    {
+        if (!$this->user->hasAccess(['xitara.faq.howto'])) {
+            Log::debug(__METHOD__);
+            $query->where('group_id', '<>', 10);
+        }
+    }
+
+    public function create(Int $groupId = null)
+    {
+        $this->vars['howto'] = $groupId;
+        $this->asExtension('FormController')->create();
     }
 
     public function onReorder()
     {
-        trace_sql();
         $this->asExtension('ReorderController')->onReorder();
     }
 }

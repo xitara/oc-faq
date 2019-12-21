@@ -1,16 +1,22 @@
-<?php namespace Xitara\PMFaq;
+<?php namespace Xitara\Faq;
 
 use App;
 use Backend;
 use BackendMenu;
+use Event;
+use Log;
 use System\Classes\PluginBase;
-use Xitara\PMCore\Plugin as PMCore;
+use Xitara\Core\Plugin as Core;
 
 /**
- * PMFaq Plugin Information File
+ * Faq Plugin Information File
  */
 class Plugin extends PluginBase
 {
+    /**
+     * @var array Plugin dependencies
+     */
+    public $require = ['Xitara.Core'];
 
     /**
      * Returns information about this plugin.
@@ -20,8 +26,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'xitara.pmfaq::lang.plugin.name',
-            'description' => 'xitara.pmfaq::lang.plugin.description',
+            'name' => 'xitara.faq::lang.plugin.name',
+            'description' => 'xitara.faq::lang.plugin.description',
             'author' => 'Xitara Websolution',
             'homepage' => 'https://xitara.net',
         ];
@@ -35,9 +41,9 @@ class Plugin extends PluginBase
     public function register()
     {
         BackendMenu::registerContextSidenavPartial(
-            'Xitara.PMFaq',
-            'pmfaq',
-            '$/xitara/pmcore/partials/_sidebar.htm'
+            'Xitara.Faq',
+            'faq',
+            '$/xitara/core/partials/_sidebar.htm'
         );
     }
 
@@ -58,7 +64,21 @@ class Plugin extends PluginBase
         /**
          * add items to sidemenu
          */
-        PMCore::getSideMenu('Xitara.PMFaq', 'pmfaq');
+        // PMCore::getSideMenu('Xitara.Faq', 'faq');
+        Core::getSideMenu('Xitara.Faq', 'faq');
+
+        Event::listen('backend.list.extendQuery', function ($widget, $query) {
+            Log::debug(__METHOD__);
+            if ($widget->model instanceof \Foo\Bar\Models\Item) {
+                // Only backend users who are not super user
+                if (Auth::getUser()->isSuperUser()) {
+                    return;
+                }
+
+                $allowed = Auth::getUser()->allowedItems->lists('id');
+                $query->whereIn('id', $allowed);
+            }
+        });
     }
 
     /**
@@ -69,7 +89,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Xitara\PMFaq\Components\FaqList' => 'faqList',
+            'Xitara\Faq\Components\FaqList' => 'faqList',
         ];
     }
 
@@ -80,12 +100,21 @@ class Plugin extends PluginBase
      */
     public function registerPermissions()
     {
-        return []; // Remove this line to activate
-
         return [
-            'xitara.pmfaq.some_permission' => [
-                'tab' => 'xitara.pmfaq::lang.plugin.name',
-                'label' => 'xitara.pmfaq::lang.permissions.some_permission',
+            'xitara.faq.faq' => [
+                'tab' => 'PmFaq',
+                'label' => 'FAQs verwalten',
+                'order' => 90,
+            ],
+            'xitara.faq.group' => [
+                'tab' => 'PmFaq',
+                'label' => 'Gruppen verwalten',
+                'order' => 91,
+            ],
+            'xitara.faq.howto' => [
+                'tab' => 'PmFaq',
+                'label' => 'HowTo\'s verwalten',
+                'order' => 92,
             ],
         ];
     }
@@ -98,11 +127,19 @@ class Plugin extends PluginBase
     public function registerNavigation()
     {
         return [
-            'pmfaq' => [
-                'label' => 'xitara.pmfaq::lang.plugin.name',
-                'url' => Backend::url('xitara/pmfaq/faq'),
+            'faq' => [
+                'label' => 'xitara.faq::lang.plugin.name',
+                'url' => Backend::url('xitara/faq/faq'),
                 'icon' => 'icon-leaf',
-                'permissions' => ['xitara.pmfaq.*'],
+                'permissions' => ['xitara.faq.*'],
+                'order' => 500,
+                'hidden' => true,
+            ],
+            'howto' => [
+                'label' => 'xitara.faq::lang.plugin.name',
+                'url' => Backend::url('xitara/faq/faq'),
+                'icon' => 'icon-leaf',
+                'permissions' => ['xitara.faq.howto'],
                 'order' => 500,
                 'hidden' => true,
             ],
@@ -114,7 +151,7 @@ class Plugin extends PluginBase
      * @autor   mburghammer
      * @date    Sa 14 Jul 2018 13:04:40 CEST
      *
-     * @see Xitara\Toolbox::getSideMenu
+     * @see Xitara\Core::getSideMenu
      *
      * @version 0.0.1
      * @since   0.0.1
@@ -122,19 +159,25 @@ class Plugin extends PluginBase
      */
     public static function injectSideMenu()
     {
-        return [
-            'pmfaq.faq' => [
-                'group' => 'xitara.pmfaq::lang.submenu.name',
-                'label' => 'xitara.pmfaq::lang.submenu.faqs',
-                'url' => Backend::url('xitara/pmfaq/faq'),
+        $menu = [
+            'faq.faq' => [
+                'group' => 'xitara.faq::lang.submenu.name',
+                'label' => 'xitara.faq::lang.submenu.faqs',
+                'url' => Backend::url('xitara/faq/faq'),
                 'icon' => 'icon-archive',
+                'permissions' => ['xitara.faq.faq'],
+                'order' => 1400,
             ],
-            'pmfaq.groups' => [
-                'group' => 'xitara.pmfaq::lang.submenu.name',
-                'label' => 'xitara.pmfaq::lang.submenu.groups',
-                'url' => Backend::url('xitara/pmfaq/groups'),
+            'faq.groups' => [
+                'group' => 'xitara.faq::lang.submenu.name',
+                'label' => 'xitara.faq::lang.submenu.groups',
+                'url' => Backend::url('xitara/faq/groups'),
                 'icon' => 'icon-archive',
+                'permissions' => ['xitara.faq.group'],
+                'order' => 1401,
             ],
         ];
+
+        return $menu;
     }
 }

@@ -1,6 +1,6 @@
 <?php return [
     'plugin' => [
-        'name' => 'PayedMedia FAQs',
+        'name' => 'PaidMedia FAQs',
         'description' => 'FAQ-Liste mit Gruppierungsmöglichkeit',
     ],
     'submenu' => [
@@ -18,10 +18,12 @@
         'active' => 'Aktiv',
         'created_at' => 'angelegt',
         'updated_at' => 'letztes Update',
+        'reorder_title' => 'Reihenfolge ändern',
     ],
     'groups' => [
         'placeholder' => 'Gruppe auswählen',
         'all' => 'alle',
+        'label' => 'Gruppe',
     ],
     'description' => [
         'group' => 'Gruppe der FAQs die angezeigt werden soll.',

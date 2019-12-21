@@ -1,4 +1,4 @@
-<?php namespace Xitara\PMFaq\Updates;
+<?php namespace Xitara\Faq\Updates;
 
 use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
@@ -8,7 +8,7 @@ class CreateGroupsTable extends Migration
 {
     public function up()
     {
-        Schema::create('xitara_pmfaq_groups', function (Blueprint $table) {
+        Schema::create('xitara_faq_groups', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 255);
@@ -19,6 +19,6 @@ class CreateGroupsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('xitara_pmfaq_groups');
+        Schema::dropIfExists('xitara_faq_groups');
     }
 }

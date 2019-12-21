@@ -1,5 +1,5 @@
-title: 'xitara.pmfaqs::lang.faq.reorder_title'
+title: 'xitara.faqs::lang.faq.reorder_title'
 nameFrom: question
-modelClass: Xitara\PMFaq\Models\Faq
+modelClass: Xitara\Faq\Models\Faq
 toolbar:
     buttons: reorder_toolbar

@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('xitara/pmfaq/faq') ?>"><?= e(trans('xitara.pmfaq::lang.faqs.menu_label')) ?></a></li>
+        <li><a href="<?= Backend::url('xitara/faq/faq') ?>"><?= e(trans('xitara.faq::lang.faqs.menu_label')) ?></a></li>
         <li><?= e(trans($this->pageTitle)) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -38,10 +38,10 @@
                     class="oc-icon-trash-o btn-icon danger pull-right"
                     data-request="onDelete"
                     data-load-indicator="<?= e(trans('backend::lang.form.deleting_name', ['name'=>$formRecordName])) ?>"
-                    data-request-confirm="<?= e(trans('xitara.pmfaq::lang.faqs.delete_confirm')) ?>">
+                    data-request-confirm="<?= e(trans('xitara.faq::lang.faqs.delete_confirm')) ?>">
                 </button>
                 <span class="btn-text">
-                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('xitara/pmfaq/faq') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
+                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('xitara/faq/faq') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
             </div>
         </div>
@@ -51,6 +51,16 @@
 <?php else: ?>
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-    <p><a href="<?= Backend::url('xitara/pmfaq/faq') ?>" class="btn btn-default"><?= e(trans('xitara.pmfaq::lang.faqs.return_to_list')) ?></a></p>
+    <p><a href="<?= Backend::url('xitara/faq/faq') ?>" class="btn btn-default"><?= e(trans('xitara.faq::lang.faqs.return_to_list')) ?></a></p>
 
 <?php endif ?>
+
+<script>
+    $.FroalaEditor.DEFAULTS = $.extend($.FroalaEditor.DEFAULTS, {
+        imageDefaultAlign: 'left',
+    });
+
+    <?php if (!$this->user->hasAccess(['xitara.faq.howto'])): ?>
+        $('#Form-field-Faq-group option[value="10"]').remove();
+    <?php endif; ?>
+</script>

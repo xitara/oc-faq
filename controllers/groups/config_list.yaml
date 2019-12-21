@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/xitara/pmfaq/models/groups/columns.yaml
+list: $/xitara/faq/models/groups/columns.yaml
 
 # Model Class name
-modelClass: Xitara\PMFaq\Models\Groups
+modelClass: Xitara\Faq\Models\Groups
 
 # List Title
-title: xitara.pmfaq::lang.groups.list_title
+title: xitara.faq::lang.groups.list_title
 
 # Link URL for each record
-recordUrl: xitara/pmfaq/groups/update/:id
+recordUrl: xitara/faq/groups/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

@@ -1,10 +1,15 @@
 fields:
     name:
-        label: 'xitara.pmfaq::lang.faqs.name'
+        label: 'xitara.faq::lang.faq.name'
         span: full
         type: text
     description:
-        label: 'xitara.pmfaq::lang.faqs.description'
+        label: 'xitara.faq::lang.faq.description'
         size: large
         span: full
         type: richeditor
+    is_all:
+        label: 'Anzeigen in Komponente bei Einstellung "Alle"'
+        span: auto
+        type: switch
+        default: 1

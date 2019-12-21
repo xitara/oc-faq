@@ -1,8 +1,8 @@
 <div data-control="toolbar">
     <a
-        href="<?= Backend::url('xitara/pmfaq/faq/create') ?>"
+        href="<?= Backend::url('xitara/faq/faq/create') ?>"
         class="btn btn-primary oc-icon-plus">
-        <?= e(trans('xitara.pmfaq::lang.faq.new')) ?>
+        <?= e(trans('xitara.faq::lang.faq.new')) ?>
     </a>
 
     <button
@@ -12,7 +12,7 @@
             checked: $('.control-list').listWidget('getChecked')
         })"
         data-request="onDelete"
-        data-request-confirm="<?= e(trans('xitara.pmfaq::lang.faqs.delete_selected_confirm')) ?>"
+        data-request-confirm="<?= e(trans('xitara.faq::lang.faqs.delete_selected_confirm')) ?>"
         data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
@@ -22,8 +22,8 @@
     </button>
 
     <a
-        href="<?= Backend::url('xitara/pmfaq/faq/reorder') ?>"
+        href="<?= Backend::url('xitara/faq/faq/reorder') ?>"
         class="btn btn-primary oc-icon-arrows-v">
-        <?= e(trans('xitara.pmfaq::lang.faq.reorder_title')) ?>
+        <?= e(trans('xitara.faq::lang.faq.reorder_title')) ?>
     </a>
 </div>

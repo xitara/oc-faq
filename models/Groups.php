@@ -1,4 +1,4 @@
-<?php namespace Xitara\PMFaq\Models;
+<?php namespace Xitara\Faq\Models;
 
 use Model;
 
@@ -10,7 +10,7 @@ class Groups extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'xitara_pmfaq_groups';
+    public $table = 'xitara_faq_groups';
 
     /**
      * @var array Guarded fields

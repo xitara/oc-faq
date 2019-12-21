@@ -1,8 +1,8 @@
 <div data-control="toolbar">
     <a
-        href="<?= Backend::url('xitara/pmfaq/groups/create') ?>"
+        href="<?= Backend::url('xitara/faq/groups/create') ?>"
         class="btn btn-primary oc-icon-plus">
-        <?= e(trans('xitara.pmfaq::lang.group.new')) ?>
+        <?= e(trans('xitara.faq::lang.group.new')) ?>
     </a>
 
     <button
@@ -12,7 +12,7 @@
             checked: $('.control-list').listWidget('getChecked')
         })"
         data-request="onDelete"
-        data-request-confirm="<?= e(trans('xitara.pmfaq::lang.groups.delete_selected_confirm')) ?>"
+        data-request-confirm="<?= e(trans('xitara.faq::lang.groups.delete_selected_confirm')) ?>"
         data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"

@@ -1,4 +1,4 @@
-<?php namespace Xitara\PMFaq\Models;
+<?php namespace Xitara\Faq\Models;
 
 use Model;
 
@@ -13,7 +13,7 @@ class Faq extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'xitara_pmfaq_faqs';
+    public $table = 'xitara_faq_faqs';
 
     /**
      * @var array Validation rules
@@ -39,7 +39,7 @@ class Faq extends Model
     public $hasMany = [];
     public $belongsTo = [
         'group' => [
-            'Xitara\PMFaq\Models\Groups',
+            'Xitara\Faq\Models\Groups',
         ],
     ];
     public $belongsToMany = [];
@@ -47,5 +47,11 @@ class Faq extends Model
     public $morphOne = [];
     public $morphMany = [];
     public $attachOne = [];
-    public $attachMany = [];
+    public $attachMany = [
+        'images' => [
+            'System\Models\File',
+            'delete' => true,
+            'public' => true,
+        ],
+    ];
 }

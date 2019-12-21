@@ -1,4 +1,4 @@
-<?php namespace Xitara\PMFaq\Updates;
+<?php namespace Xitara\Faq\Updates;
 
 use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
@@ -8,7 +8,7 @@ class CreateFaqsTable extends Migration
 {
     public function up()
     {
-        Schema::create('xitara_pmfaq_faqs', function (Blueprint $table) {
+        Schema::create('xitara_faq_faqs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->text('question')->nullable();
@@ -22,6 +22,6 @@ class CreateFaqsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('xitara_pmfaq_faqs');
+        Schema::dropIfExists('xitara_faq_faqs');
     }
 }

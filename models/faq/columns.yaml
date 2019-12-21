@@ -1,31 +1,32 @@
 columns:
     id:
-        label: 'xitara.pmfaq::lang.faq.id'
+        label: 'xitara.faq::lang.faq.id'
         type: number
         searchable: true
         sortable: true
     question:
-        label: 'xitara.pmfaq::lang.faq.question'
+        label: 'xitara.faq::lang.faq.question'
         type: text
         searchable: true
         sortable: true
-    group_id:
-        label: 'xitara.pmfaq::lang.faq.group'
-        type: number
+    group_name:
+        label: 'xitara.faq::lang.faq.group'
+        relation: group
+        select: name
         searchable: true
         sortable: true
     active:
-        label: 'xitara.pmfaq::lang.faq.active'
+        label: 'xitara.faq::lang.faq.active'
         type: switch
         searchable: true
         sortable: true
     created_at:
-        label: 'xitara.pmfaq::lang.faq.created_at'
+        label: 'xitara.faq::lang.faq.created_at'
         type: datetime
         searchable: true
         sortable: true
     updated_at:
-        label: 'xitara.pmfaq::lang.faq.updated_at'
+        label: 'xitara.faq::lang.faq.updated_at'
         type: datetime
         searchable: true
         sortable: true

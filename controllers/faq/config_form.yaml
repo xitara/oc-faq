@@ -1,14 +1,14 @@
-name: 'xitara.pmfaq::lang.faq.label'
-modelClass: Xitara\PMFaq\Models\Faq
-form: $/xitara/pmfaq/models/faq/fields.yaml
-defaultRedirect: xitara/pmfaq/faq
+name: 'xitara.faq::lang.faq.label'
+modelClass: Xitara\Faq\Models\Faq
+form: $/xitara/faq/models/faq/fields.yaml
+defaultRedirect: xitara/faq/faq
 create:
-    title: 'xitara.pmfaq::lang.faq.create_title'
-    redirect: 'xitara/pmfaq/faq/update/:id'
-    redirectClose: xitara/pmfaq/faq
+    title: 'xitara.faq::lang.faq.create_title'
+    redirect: 'xitara/faq/faq/update/:id'
+    redirectClose: xitara/faq/faq
 update:
-    title: 'xitara.pmfaq::lang.faq.update_title'
-    redirect: xitara/pmfaq/faq
-    redirectClose: xitara/pmfaq/faq
+    title: 'xitara.faq::lang.faq.update_title'
+    redirect: xitara/faq/faq
+    redirectClose: xitara/faq/faq
 preview:
-    title: 'xitara.pmfaq::lang.faq.preview_title'
+    title: 'xitara.faq::lang.faq.preview_title'

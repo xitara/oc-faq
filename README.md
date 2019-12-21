@@ -1,1 +1,1 @@
-pmfaq
+faq

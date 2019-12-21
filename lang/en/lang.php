@@ -2,7 +2,7 @@
 
 return [
     'plugin' => [
-        'name' => 'PMFaq',
+        'name' => 'Faq',
         'description' => 'No description provided yet...',
     ],
     'permissions' => [

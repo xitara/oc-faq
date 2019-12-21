@@ -3,29 +3,29 @@
 # ===================================
 
 # Record name
-name: xitara.pmfaq::lang.groups.label
+name: xitara.faq::lang.groups.label
 
 # Model Form Field configuration
-form: $/xitara/pmfaq/models/groups/fields.yaml
+form: $/xitara/faq/models/groups/fields.yaml
 
 # Model Class name
-modelClass: Xitara\PMFaq\Models\Groups
+modelClass: Xitara\Faq\Models\Groups
 
 # Default redirect location
-defaultRedirect: xitara/pmfaq/groups
+defaultRedirect: xitara/faq/groups
 
 # Create page
 create:
-    # title: xitara.pmfaq::lang.group.create_title
-    redirect: xitara/pmfaq/groups/update/:id
-    redirectClose: xitara/pmfaq/groups
+    # title: xitara.faq::lang.group.create_title
+    redirect: xitara/faq/groups/update/:id
+    redirectClose: xitara/faq/groups
 
 # Update page
 update:
-    # title: xitara.pmfaq::lang.group.update_title
-    redirect: xitara/pmfaq/groups
-    redirectClose: xitara/pmfaq/groups
+    # title: xitara.faq::lang.group.update_title
+    redirect: xitara/faq/groups
+    redirectClose: xitara/faq/groups
 
 # Preview page
 preview:
-    # title: xitara.pmfaq::lang.group.preview_title
+    # title: xitara.faq::lang.group.preview_title

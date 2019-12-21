@@ -1,20 +1,34 @@
 fields:
     question:
-        label: 'xitara.pmfaq::lang.faq.question'
+        label: 'xitara.faq::lang.faq.question'
         span: full
         type: text
     group:
-        label: 'xitara.pmfaq::lang.faq.group'
+        label: 'xitara.faq::lang.faq.group'
         nameFrom: name
         descriptionFrom: description
         span: auto
         type: relation
     active:
-        label: 'xitara.pmfaq::lang.faq.active'
+        label: 'xitara.faq::lang.faq.active'
         span: auto
         type: switch
+        default: 1
     answer:
-        label: 'xitara.pmfaq::lang.faq.answer'
-        size: large
+        label: 'xitara.faq::lang.faq.answer'
+        size: giant
         span: full
         type: richeditor
+    images:
+        type: fileupload
+        mode: image
+        attachOnUpload: true
+        thumbOptions:
+            mode: crop
+            offset:
+                - 0
+                - 0
+            # quality: 90
+            # sharpen: 0
+            # interlace: false
+            extension: auto

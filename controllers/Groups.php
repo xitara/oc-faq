@@ -1,16 +1,18 @@
-<?php namespace Xitara\PMFaq\Controllers;
+<?php namespace Xitara\Faq\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
 // use Flash;
 // use Lang;
-use Xitara\PMFaq\Models\Group;
+use Xitara\Faq\Models\Group;
 
 /**
  * Groups Back-end Controller
  */
 class Groups extends Controller
 {
+    public $requiredPermissions = ['xitara.faq.group'];
+
     public $implement = [
         'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController',
@@ -23,8 +25,14 @@ class Groups extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Xitara.PMFaq', 'pmfaq', 'pmfaq.groups');
+        BackendMenu::setContext('Xitara.Faq', 'faq', 'faq.groups');
     }
+
+    // public function relationExtendQuery($widget, $field)
+    // {
+    //     Log::debug(__METHOD__);
+    //     $widget->bindEvent('list.extendQuery', function() { ... });
+    // }
 
     /**
      * Deleted checked groups.
@@ -41,11 +49,19 @@ class Groups extends Controller
     //             $group->delete();
     //         }
 
-    //         Flash::success(Lang::get('xitara.pmfaq::lang.groups.delete_selected_success'));
+    //         Flash::success(Lang::get('xitara.faq::lang.groups.delete_selected_success'));
     //     } else {
-    //         Flash::error(Lang::get('xitara.pmfaq::lang.groups.delete_selected_empty'));
+    //         Flash::error(Lang::get('xitara.faq::lang.groups.delete_selected_empty'));
     //     }
 
     //     return $this->listRefresh();
     // }
+
+    /**
+     * @return mixed
+     */
+    public function getListConfig()
+    {
+        return $this->listConfig;
+    }
 }
